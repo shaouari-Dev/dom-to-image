@@ -1,12 +1,12 @@
-#### ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `This is a forked repo of Paul Bakaus's DOM to Image project. This forked repo consists minor changes to bypass font rendering which is supposed to eliminate XHR requests and resolves associated issues like CORS. Tested on Chrome, Firefox, Edge and Safari.`
-
 # DOM to Image
+
+> **Note:** This is a forked repository of Paul Bakaus's DOM to Image project. This fork includes minor changes to bypass font rendering, which eliminates XHR requests and resolves associated CORS issues. Tested on Chrome, Firefox, Edge and Safari.
 
 [![Build Status](https://travis-ci.org/tsayen/dom-to-image.svg?branch=master)](https://travis-ci.org/tsayen/dom-to-image)
 
 ## What is it
 
-**dom-to-image** is a library which can turn arbitrary DOM node into
+**dom-to-image** is a library which can turn arbitrary DOM nodes into
 a vector (SVG) or raster (PNG or JPEG) image, written in JavaScript. It's
 based on [domvas by Paul Bakaus](https://github.com/pbakaus/domvas)
 and has been completely rewritten, with some bugs fixed and some new
@@ -115,19 +115,18 @@ domtoimage.toPixelData(node)
     });
 ```
 
-* * *
+---
 
-_All the functions under `impl` are not public API and are exposed only
-for unit testing._
+> **Note:** All the functions under `impl` are not public API and are exposed only for unit testing.
 
-* * *
+---
 
 ### Rendering options
 
 #### filter
 
 A function taking DOM node as argument. Should return true if passed node
-should be included in the output (excluding node means excluding it's
+should be included in the output (excluding node means excluding its
 children as well). Not called on the root node.
 
 #### bgcolor
@@ -160,14 +159,17 @@ A data URL for a placeholder image that will be used when fetching an image fail
 ## Browsers
 
 It's tested on latest Chrome and Firefox (49 and 45 respectively at the time
-of writing), with Chrome performing  significantly better on big DOM trees,
-possibly due to it's more performant SVG support, and the fact that it supports
- `CSSStyleDeclaration.cssText` property.  
+of writing), with Chrome performing significantly better on big DOM trees,
+possibly due to its more performant SVG support, and the fact that it supports
+`CSSStyleDeclaration.cssText` property.
 
-_Internet Explorer is not (and will not be) supported, as it does not support
-SVG `<foreignObject>` tag_  
+### Browser Support
 
-_Safari [is not supported](https://github.com/tsayen/dom-to-image/issues/27), as it uses a stricter security model on `<foreignObject`> tag. Suggested workaround is to use `toSvg` and render on the server._`
+- ✅ **Chrome** - Full support, best performance
+- ✅ **Firefox** - Full support
+- ❌ **Internet Explorer** - Not supported (missing SVG `<foreignObject>` tag support)
+- ❌ **Safari** - [Not supported](https://github.com/tsayen/dom-to-image/issues/27) due to stricter security model on `<foreignObject>` tag
+  - **Workaround:** Use `toSvg` and render on the server
 
 ## Dependencies
 
